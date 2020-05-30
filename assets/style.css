@@ -1,0 +1,27 @@
+/* 
+1) Need to look up and style for the UV index
+AC: 
+WHEN I view the UV index
+THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+
+UV Scale: 1-11+
+Grouped visually by: 1,2 // 3,4,5 // 6,7 // 8,9,10 // 11+
+BUT the scale below for instructions
+
+0 to 2: Low
+No protection needed. You can safely stay outside using minimal sun protection.
+
+3 to 7: Moderate to High
+Protection needed. Seek shade during late morning through mid-afternoon. 
+When outside, generously apply broad-spectrum SPF-15 or higher sunscreen on exposed skin, 
+and wear protective clothing, a wide-brimmed hat, and sunglasses.
+
+8+: Very High to Extreme
+Extra protection needed. Be careful outside, especially during late morning through mid-afternoon. 
+If your shadow is shorter than you, seek shade and wear protective clothing, a wide-brimmed hat, and sunglasses,
+ and generously apply a minimum of SPF-15, broad-spectrum sunscreen on exposed skin. */
+
+
+/*
+2) Want to shade the container similar to a previous project of mine */
+
