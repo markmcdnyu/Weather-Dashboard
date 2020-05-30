@@ -92,7 +92,8 @@ function makeAjaxCall() {
             url: queryURLuvi,
             method: "GET",
         }).then(function (response) {
-            var UVIndex = response
+            var UVIndex = response[0].value;
+            $("#uvIndex")
         })
 
 
