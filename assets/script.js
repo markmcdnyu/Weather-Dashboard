@@ -111,18 +111,39 @@ function makeAjaxCall() {
                 $("#uvIndex").addClass("extreme p-1");
             }
         });
-
-
-
     });
 }
 
+//Need to create the function to fill the cityName arrary and loop and run through the makeAjax call function
+function createCityList() {
+    $("#cityList").empty();
+    for (var i = 0; i < cityName.length; i++) {
+        var cityItem = $("#<button").text(cityname[i]);
+        cityItem.addClass(
+            "btn btn-outline-secondary d-flex justify-content-start"
+        );
+        
+        //on click event in jquery
+        cityItem.on("click", function () {
+            lastCity = $(this).text();
+            makeAjaxCall();
+        });
+        $("#cityList").prepend(cityItem);
+    }
+}
+
+//Need the search button icon to have a click event
+$("#searchBtn").click(function () {
+    var cityTextValue = $("#cityInput").val();
+    cityName.push(cityTextValue);
+    lastCity = cityTextValue;
+    localStorage.setItem("lastCity", lastCity);
+    //run createCity fn
+    createCityList();
+    //run make AjaxCall fn
+    makeAjaxCall();
+});
 
 
-
-
-
-
-//on click event in jquery to search btn
 
 //need function to pull the recently searched into the cycle.  Also need to make Austin the default
