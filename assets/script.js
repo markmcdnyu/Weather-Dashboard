@@ -54,3 +54,4 @@ function makeAjaxCall() {
     
     //for loop to populate items for the 5 day forecast and also momentjs() for the time
 }
+
