@@ -18,7 +18,7 @@ storeCity();
 
 //function for the ajax call here
     //within this function will be a lot
-function makeAjaxCall(){
+function makeAjaxCall() {
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?appid=" + API + "&q=" + lastCity;
 
     // This ajax call will actually pull the weather data without the UV data from the API.
@@ -35,37 +35,75 @@ function makeAjaxCall(){
         );
         
         //kelvin to F conversion
-        let tempF = (response.list[0].main.temp -273.15) * 1.8 + 32;
+        var tempF = (response.list[0].main.temp - 273.15) * 1.8 + 32;
 
         //now take the temp and push to the dashboard
         $("#temp").html("Temperature: " + tempF.toFixed[0] + " °F"); //degree symbol on Mac is shift opt 8
 
         //take the humidity and push to dashboard
-        $("#humidity").html("Humidity: ") + response.list[0].main.humidity + "%");
+        $("#humidity").html("Humidity: " + response.list[0].main.humidity + "%");
 
         //REMEMBER: wind speed into MPH! 
-        let milesPerHR = response.list[0].wind.speed * 2.237;
+        var milesPerHR = response.list[0].wind.speed * 2.237;
 
         //take wind speed and push to dashboard
         $("wind").html("Wind Speed: " + milesPerHR.toFixed(1) + " MPH");
         
 
-        //for loop to populate items for the 5 daya forecast and also momentjs() for the time 
+        //for loop to populate items for the 5 day forecast and also momentjs() for the time 
+        for (var i = 1; i < 6; i++) {
+            var m = moment().add(i, "d");
+            var tempF = (response.list[i].main.temp - 273.15) *1.8 +32;
+            
+            //title
+            $("#cityTitle" + i).html(m.format("m/D/YYYY"));
+            //icon
+            $("#cityIcon" + i).html(
+                `<img src ="https://openweathermap.org/img/wn/${response.list[i].weather[0].icon}@2x.png"/>`
+            );
+            //temp
+            $("#cityTemp" + i).html("Temp: " + tempF.toFixed(0) + " °F");
+            //humidity
+            $("#cityHumidity" +i).html(
+                "Humidity: " + response.list[i].main.humidity + "%"
+            );
+        }
+        
+        //It might be that the UV will be different API call because the forecast call is https://api.openweathermap.org/data/2.5/forecast?appid=
+        //but the uv call might need to be https://api.openweathermap.org/data/2.5/uvi/history?appid= 
+        //Yes, seems to be the case for 2 different calls 
+        
+        var queryURLuvi = 
+            "https://api.openweathermap.org/data/2.5/uvi/history?appid=" + 
+            API + 
+            "&lat=" +
+            response.city.coord.lat +
+            "&lon=" +
+            response.city.coord.lon +
+            "&start=" +
+            moment().unix() +
+            "&end=" +
+            moment().add(1, "d").unix();
+        
+        // need a function to to make the recent searched city list 
+        //within this will most likely need a for loop to create new button for a recent search to go back to and click on
+        //will also need to append or prepend the list
+        $.ajax({
+            url: queryURLuvi,
+            method: "GET",
+        }).then(function (response) {
+            var UVIndex = response
+        })
 
-    })
+
+
+    });
 }
 
 
 
 
-//It might be that the UV will be different API call because the forecast call is https://api.openweathermap.org/data/2.5/forecast?appid=
-//but the uv call might need to be https://api.openweathermap.org/data/2.5/uvi/history?appid= 
-//Yes, seems to be the case for 2 different calls 
 
-
-// need a function to to make the recent searched city list 
-    //within this will most likely need a for loop to create new button for a recent search to go back to and click on
-    //will also need to append or prepend the list
 
 
 //on click event in jquery to search btn
