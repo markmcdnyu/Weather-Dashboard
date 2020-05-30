@@ -38,20 +38,100 @@
                             </button>
                         </div>
                     </div>
-
+                    <!--Need a section for the previous cities searched and locally stored -->
+                    <div class="mt-3 w-100">
+                        <div class="btn-group-vertical w-75" id="cityList"></div>
+                    </div>
                 </div>
             </div>
-
+            <!--current weather 9 column span-->
+            <div class="col-md-9">
+                <!--Need a main div for current city weather, which from the given criteria will span most of the page and be the biggest-->
+                <!--AC: city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index-->
+                <div class="card container mt-5">
+                    <div class="card-body rounded">
+                        <h5 id="city"></h5>
+                        <p id="temp"></p>
+                        <p id="humidity"></p>
+                        <p id="wind"></p>
+                        <p>UV Index:<span id="uvIndex" class="p-1"></span></p>
+                    </div>
+                </div>
+                <!--Need a 5-day forcast container that sits below the main current day div-->
+                <br>
+                <h2>5-Day Forecast</h2>
+                <!--5 different cards for each of the days-->
+                <div class="row ml-1">
+                    <!--Day 1-->
+                    <div class="col-sm-2.4 mr-5 mb-3">
+                        <div class="card bg-primary text-light">
+                            <div class="card-body">
+                                <h5 class="card-title" id="cityTitle1">test</h5>
+                                <div class="card-text">
+                                    <p id="cityIcon1">test</p>
+                                    <p id="cityTemp1">test</p>
+                                    <p id="cityHumidity1">test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Day 2-->
+                    <div class="col-sm-2.4 mr-5 mb-3">
+                        <div class="card bg-primary text-light">
+                            <div class="card-body">
+                                <h5 class="card-title" id="cityTitle2">test</h5>
+                                <div class="card-text">
+                                    <p id="cityIcon2">test</p>
+                                    <p id="cityTemp2">test</p>
+                                    <p id="cityHumidity2">test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Day 3-->
+                    <div class="col-sm-2.4 mr-5 mb-3">
+                        <div class="card bg-primary text-light">
+                            <div class="card-body">
+                                <h5 class="card-title" id="cityTitle3">test</h5>
+                                <div class="card-text">
+                                    <p id="cityIcon3">test</p>
+                                    <p id="cityTemp3">test</p>
+                                    <p id="cityHumidity3">test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Day 4-->
+                    <div class="col-sm-2.4 mr-5 mb-3">
+                        <div class="card bg-primary text-light">
+                            <div class="card-body">
+                                <h5 class="card-title" id="cityTitle4">test</h5>
+                                <div class="card-text">
+                                    <p id="cityIcon4">test</p>
+                                    <p id="cityTemp4">test</p>
+                                    <p id="cityHumidity4">test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Day 5-->
+                    <div class="col-sm-2.4 mr-5 mb-3">
+                        <div class="card bg-primary text-light">
+                            <div class="card-body">
+                                <h5 class="card-title" id="cityTitle5">test</h5>
+                                <div class="card-text">
+                                    <p id="cityIcon5">test</p>
+                                    <p id="cityTemp5">test</p>
+                                    <p id="cityHumidity5">test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
     </div>
 
-    <!--Need a section for the previous cities searched and locally stored -->
-
-    <!--Need a main div for current city weather, which from the given criteria will span most of the page and be the biggest-->
-
-    <!--Need a 5-day forcast container that sits below the main current day div-->
 
     <!--Need 5 cards that will serve as the containers for the 5 day forecast-->
 

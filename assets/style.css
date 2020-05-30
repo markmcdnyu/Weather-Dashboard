@@ -2,6 +2,19 @@ body {
     background-color: #fdf6e3;
 }
 
+.container {
+    background-color: #fdf6e3;
+    box-shadow: 0px 5px 15px 0px;
+} 
+
+
+/* .tile {
+    background-color: #4aace4;
+    box-shadow: 0px 5px 15px 0px;
+}  */
+
+
+
 /* 
 1) Need to look up and style for the UV index
 AC: 
