@@ -93,8 +93,24 @@ function makeAjaxCall() {
             method: "GET",
         }).then(function (response) {
             var UVIndex = response[0].value;
-            $("#uvIndex")
-        })
+            $("#uvIndex").html(UVIndex);
+
+            //MAKE SURE TO REMOVE CLASS BECAUSE NEW CALLS WILL CHANGE THE UV NUMBER & COLOR!!
+            $("#uvIndex").removeclass();
+
+            //Conditinal if/else needed to sort the uvIndex
+            if (UVIndex >= 0 && UVIndex < 3) {
+                $("#uvIndex").addClass("low p-1");
+            } else if (UVIndex >= 3 && UVIndex < 6) {
+                $("#uvIndex").addClass("moderate p-1");
+            } else if (UVIndex >= 6 && UVIndex < 8) {
+                $("#uvIndex").addClass("high p-1");
+            } else if (UVIndex >= 8 && UVIndex < 11) {
+                $("#uvIndex").addClass("very_high p-1");
+            } else {
+                $("#uvIndex").addClass("extreme p-1");
+            }
+        });
 
 
 

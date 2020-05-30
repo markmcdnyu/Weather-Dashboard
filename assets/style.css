@@ -1,37 +1,11 @@
 body {
     background-color: #fdf6e3;
 }
-
+/* Want to shade the container similar to a previous project of mine */
 .container {
     background-color: #fdf6e3;
     box-shadow: 0px 5px 15px 0px;
 } 
-
-
-.tile {
-    background-color: #10699c;
-    box-shadow: 0px 5px 15px 0px;
-}
-
-.low {
-
-}
-
-.moderate {
-
-}
-
-.high {
-
-}
-
-.very_high {
-
-}
-
-.extreme {
-    
-}
 
 
 /* 
@@ -58,6 +32,43 @@ If your shadow is shorter than you, seek shade and wear protective clothing, a w
  and generously apply a minimum of SPF-15, broad-spectrum sunscreen on exposed skin. */
 
 
-/*
-2) Want to shade the container similar to a previous project of mine */
+.tile {
+    background-color: #10699c;
+    box-shadow: 0px 5px 15px 0px;
+}
+
+.low {
+    background-color: rgb(4, 119, 4);
+	color: white;
+	border: 2px solid rgb(4, 119, 4);
+	border-radius: 8px;
+}
+
+.moderate {
+    background-color: rgb(231, 198, 9);
+	color: white;
+	border: 2px solid rgb(231, 198, 9);
+	border-radius: 8px;
+}
+
+.high {
+    background-color: rgba(248, 109, 16, 0.993);
+	color: white;
+	border: 2px solid rgba(248, 109, 16, 0.993);
+	border-radius: 8px;
+}
+
+.very_high {
+    background-color: rgb(236, 63, 63);
+	color: white;
+	border: 2px solid rgb(236, 63, 63);
+	border-radius: 8px;
+}
+
+.extreme {
+    background-color: rgb(230, 71, 230);
+	color: white;
+	border: 2px solid rgb(230, 71, 230);
+	border-radius: 8px;
+}
 
