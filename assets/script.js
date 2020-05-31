@@ -28,7 +28,7 @@ function makeAjaxCall() {
     }).then(function (response) {
         $("#city").html(
             `${lastCity} ${moment().format(
-                "(M/D/YYY)"
+                "(M/D/YYYY)"
             )} <img src =""https://openweathermap.org/img/wn/${
 				response.list[0].weather[0].icon
 			}@2x.png"/>`
