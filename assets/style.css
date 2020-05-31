@@ -1,74 +1,62 @@
-/* body {
+body {
     background-color: #fdf6e3;
 }
-/* Want to shade the container similar to a previous project of mine */
-/* .container {
-    background-color: #fdf6e3; */
-    /* box-shadow: 0px 5px 15px 0px; 
-} */
 
+.navbar{
+    background-color: #073642;
+}
+p {
+    font-size: 16px;
+}
 
-/* 
-1) Need to look up and style for the UV index
-AC: 
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-
-UV Scale: 1-11+
-Grouped visually by: 1,2 // 3,4,5 // 6,7 // 8,9,10 // 11+
-BUT the scale below for instructions
-
-0 to 2: Low
-No protection needed. You can safely stay outside using minimal sun protection.
-
-3 to 7: Moderate to High
-Protection needed. Seek shade during late morning through mid-afternoon. 
-When outside, generously apply broad-spectrum SPF-15 or higher sunscreen on exposed skin, 
-and wear protective clothing, a wide-brimmed hat, and sunglasses.
-
-8+: Very High to Extreme
-Extra protection needed. Be careful outside, especially during late morning through mid-afternoon. 
-If your shadow is shorter than you, seek shade and wear protective clothing, a wide-brimmed hat, and sunglasses,
- and generously apply a minimum of SPF-15, broad-spectrum sunscreen on exposed skin. */
-
-/* 
 .tile {
-    background-color: #10699c;
+    background-color: #073642;
+}
+
+.container{
     box-shadow: 0px 5px 15px 0px;
-} */
+    background-color: #fdf6e3;
+}
 
+/* Referenced the UV index from the United States Environmental Protection Agency https://www.epa.gov*/
+
+/* 5 UV Index Categories */
+/* LOW */
 .low {
-    background-color: rgb(4, 119, 4);
+	background-color: rgb(16, 109, 16);
 	color: white;
-	border: 2px solid rgb(4, 119, 4);
+	border: 2px solid rgb(16, 109, 16);
 	border-radius: 8px;
 }
 
+/* MODERATE */
 .moderate {
-    background-color: rgb(231, 198, 9);
+	background-color: rgb(240, 209, 37);
 	color: white;
-	border: 2px solid rgb(231, 198, 9);
+	border: 2px solid rgb(240, 209, 37);
 	border-radius: 8px;
 }
 
+/* HIGH */
 .high {
-    background-color: rgba(248, 109, 16, 0.993);
+	background-color: rgba(247, 103, 8, 0.993);
 	color: white;
-	border: 2px solid rgba(248, 109, 16, 0.993);
+	border: 2px solid rgba(247, 103, 8, 0.993);
 	border-radius: 8px;
 }
 
+/* VERY HIGH */
 .very_high {
-    background-color: rgb(236, 63, 63);
+	background-color: rgb(199, 33, 33);
 	color: white;
-	border: 2px solid rgb(236, 63, 63);
+	border: 2px solid rgb(199, 33, 33);
 	border-radius: 8px;
 }
 
+/* EXTREME */
 .extreme {
-    background-color: rgb(230, 71, 230);
+	background-color: rgb(221, 20, 221);
 	color: white;
-	border: 2px solid rgb(230, 71, 230);
+	border: 2px solid rgb(221, 20, 221);
 	border-radius: 8px;
 }
-
