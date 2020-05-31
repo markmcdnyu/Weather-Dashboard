@@ -3,7 +3,7 @@
 var cityName = [];
 
 //need an emplty string for to store the name of the searched city
-var lastCity = "Austin";
+var lastCity = "";
 
 //variable for the API key
 var APIkey = "c2d54620a6b0445bd3d065fa647633a3";
@@ -13,7 +13,7 @@ var APIkey = "c2d54620a6b0445bd3d065fa647633a3";
 
 
 //Remeber to call the storage function here
-// storeCity();
+storeCity();
 
 
 //function for the ajax call here
@@ -48,11 +48,72 @@ function makeAjaxCall() {
 
         //take wind speed and push to dashboard
         $("wind").html("Wind Speed: " + milesPerHR.toFixed(1) + " MPH");
-        console.log(response);
-    });
-     // console log for    
+        //console.log(response);
     
-    //for loop to populate items for the 5 day forecast and also momentjs() for the time
+        // console log for    
+    
+        //for loop to populate items for the 5 day forecast and also momentjs() for the time
+        for (var i = 1; i < 6; i++) {
+            var m = moment().add(i, "d");
+            var tempF = (response.list[i].main.temp - 273.15) * 1.8 + 32;
+
+            //title id input here
+            $("#cityTitle" + i).html(m.format("m/D/YYYY"));
+            //icon piece will be here
+            $("#cityIcon" + i).html(
+                `<img src ="https://openweathermap.org/img/wn/${response.list[i].weather[0].icon}@2x.png"/>`
+            );
+            //temp
+            $("#cityTemp" + i).html("Temp: " + tempF.toFixed(0) + " °F");
+            //humidity
+            $("#cityHumidity" +i).html(
+                "Humidity: " + response.list[i].main.humidity + "%"
+            );
+        }
+        //It might be that the UV will be different API call because the forecast call is https://api.openweathermap.org/data/2.5/forecast?appid=
+        //but the uv call might need to be https://api.openweathermap.org/data/2.5/uvi/history?appid= 
+        //Yes, seems to be the case for 2 different calls 
+
+        var queryURLuvi = 
+            "https://api.openweathermap.org/data/2.5/uvi/history?appid=" + 
+            APIkey + 
+            "&lat=" +
+            response.city.coord.lat +
+            "&lon=" +
+            response.city.coord.lon +
+            "&start=" +
+            moment().unix() +
+            "&end=" +
+            moment().add(1, "d").unix();
+
+        // need a function to to make the recent searched city list 
+        //within this will most likely need a for loop to create new button for a recent search to go back to and click on
+        //will also need to append or prepend the list
+        
+        $.ajax({
+            url: queryURLuvi,
+            method: "GET",
+        }).then(function (response) {
+            var UVIndex = response[0].value;
+            $("#uvIndex").html(UVIndex);
+
+            //MAKE SURE TO REMOVE CLASS BECAUSE NEW CALLS WILL CHANGE THE UV NUMBER & COLOR!!
+            $("#uvIndex").removeclass();
+        
+            //Conditinal if/else needed to sort the uvIndex
+            if (UVIndex >= 0 && UVIndex < 3) {
+                $("#uvIndex").addClass("low p-1");
+            } else if (UVIndex >= 3 && UVIndex < 6) {
+                $("#uvIndex").addClass("moderate p-1");
+            } else if (UVIndex >= 6 && UVIndex < 8) {
+                $("#uvIndex").addClass("high p-1");
+            } else if (UVIndex >= 8 && UVIndex < 11) {
+                $("#uvIndex").addClass("very_high p-1");
+            } else {
+                $("#uvIndex").addClass("extreme p-1");
+            }
+        
+        });
+    });
 }
-makeAjaxCall();
 
