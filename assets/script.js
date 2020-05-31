@@ -9,7 +9,7 @@ var lastCity = "";
 var APIkey = "c2d54620a6b0445bd3d065fa647633a3";
 
 //Trying to see if I need to set the variable for the API url....might not need it as a global variable
-// var queryURL = "https://api.openweathermap.org/data/2.5/forecast?appid=" + API + "&q=";
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast?appid=" + APIkey + "&q=";
 
 
 //Remeber to call the storage function here
@@ -19,7 +19,7 @@ storeCity();
 //function for the ajax call here
     //within this function will be a lot
 function makeAjaxCall() {
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?&q=" + lastCity + "&appid=" + APIkey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?appid=" + APIkey + "&q=" + lastCity;
 
     // This ajax call will actually pull the weather data without the UV data from the API.
     $.ajax({
@@ -29,7 +29,7 @@ function makeAjaxCall() {
         $("#city").html(
             `${lastCity} ${moment().format(
                 "(M/D/YYYY)"
-            )} <img src =""https://openweathermap.org/img/wn/${
+            )} <img src ="https://openweathermap.org/img/wn/${
 				response.list[0].weather[0].icon
 			}@2x.png"/>`
         );
@@ -47,7 +47,7 @@ function makeAjaxCall() {
         var milesPerHR = response.list[0].wind.speed * 2.237;
 
         //take wind speed and push to dashboard
-        $("wind").html("Wind Speed: " + milesPerHR.toFixed(1) + " MPH");
+        $("#wind").html("Wind Speed: " + milesPerHR.toFixed(1) + " MPH");
         //console.log(response);
     
         // console log for    
@@ -58,13 +58,13 @@ function makeAjaxCall() {
             var tempF = (response.list[i].main.temp - 273.15) * 1.8 + 32;
 
             //title id input here
-            $("#cityTitle" + i).html(m.format("m/D/YYYY"));
+            $("#cityTitle" + i).html(m.format("M/D/YYYY"));
             //icon piece will be here
             $("#cityIcon" + i).html(
                 `<img src ="https://openweathermap.org/img/wn/${response.list[i].weather[0].icon}@2x.png"/>`
             );
             //temp
-            $("#cityTemp" + i).html("Temp: " + tempF.toFixed(0) + " °F");
+            $("#cityTemp" + i).html("Temp: " + tempF.toFixed(2) + " °F");
             //humidity
             $("#cityHumidity" +i).html(
                 "Humidity: " + response.list[i].main.humidity + "%"
@@ -117,3 +117,46 @@ function makeAjaxCall() {
     });
 }
 
+//Need to create the function to fill the cityName arrary and loop and run through the makeAjax call function
+function createCityList() {
+    $("#cityList").empty();
+    for (var i = 0; i < cityName.length; i++) {
+        var cityItem = $("<button>").text(cityname[i]);
+        cityItem.addClass(
+            "btn btn-outline-secondary d-flex justify-content-start"
+        );
+        
+        //on click event in jquery
+        cityItem.on("click", function () {
+            lastCity = $(this).text();
+            makeAjaxCall();
+        });
+        $("#cityList").append(cityItem);
+    }
+}
+
+//Need the search button icon to have a click event
+$("#searchBtn").click(function () {
+    var cityTextValue = $("#cityInput").val();
+    cityName.push(cityTextValue);
+    lastCity = cityTextValue;
+    localStorage.setItem("lastCity", lastCity);
+    //run createCity fn
+    createCityList();
+    //run make AjaxCall fn
+    makeAjaxCall();
+});
+
+//need function to pull the recently searched into the cycle.  Also need to make Austin the default
+function storeCity() {
+    var storedLastCity = localStorage.getItem("lastCity");
+    if (storedLastCity !== null && storedLastCity !== "") {
+        lastCity = storedLastCity;
+        cityName.push(storedLastCity);
+    } else {
+        lastCity = "Austin";
+        cityName.push(lastCity);
+    }
+    createCityList();
+    makeAjaxCall();
+}

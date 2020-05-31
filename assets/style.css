@@ -1,11 +1,11 @@
-body {
+/* body {
     background-color: #fdf6e3;
 }
 /* Want to shade the container similar to a previous project of mine */
-.container {
-    background-color: #fdf6e3;
-    box-shadow: 0px 5px 15px 0px;
-} 
+/* .container {
+    background-color: #fdf6e3; */
+    /* box-shadow: 0px 5px 15px 0px; 
+} */
 
 
 /* 
@@ -31,11 +31,11 @@ Extra protection needed. Be careful outside, especially during late morning thro
 If your shadow is shorter than you, seek shade and wear protective clothing, a wide-brimmed hat, and sunglasses,
  and generously apply a minimum of SPF-15, broad-spectrum sunscreen on exposed skin. */
 
-
+/* 
 .tile {
     background-color: #10699c;
     box-shadow: 0px 5px 15px 0px;
-}
+} */
 
 .low {
     background-color: rgb(4, 119, 4);
