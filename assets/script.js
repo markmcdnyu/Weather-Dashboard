@@ -1,4 +1,4 @@
-//Declare the variables here
+//Declare the global variables here
 
 //Declare the empty array variable to store cities being searched.
 var cityName = [];
